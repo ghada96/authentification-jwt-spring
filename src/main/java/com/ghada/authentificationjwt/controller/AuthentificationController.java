@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,8 +43,8 @@ public class AuthentificationController {
 
 
 
-    @Value("${byblos.api:http://localhost:8088/byblos}")
-    private String apiByblos;
+  /*  @Value("${byblos.api:http://localhost:8088/byblos}")
+    private String apiByblos;*/
 
     @PostMapping(value = "/generate-token")
     public ResponseEntity<Object> register(@RequestBody LoginUser loginUser) {
@@ -86,9 +87,6 @@ public class AuthentificationController {
         }
 
     }
-
-
-
     @PostMapping(value = "/generate-token2")
     public ResponseEntity<Auth> reGenerateToken(@RequestBody LoginUser loginUser) {
 
@@ -133,9 +131,9 @@ public class AuthentificationController {
     }
 
 
-    @PostMapping(value = "/logoutURI")
+  /*  @PostMapping(value = "/logoutURI")
     @ResponseBody
     public UrlDTO logout() {
         return new UrlDTO( apiByblos+"/j_spring_security_logout");
-    }
+    }*/
 }

@@ -1,7 +1,10 @@
 package com.ghada.authentificationjwt.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 public class RoleEntity {
     /**
      * serial uid par défaut

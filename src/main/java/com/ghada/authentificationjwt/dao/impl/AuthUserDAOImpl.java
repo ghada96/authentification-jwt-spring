@@ -27,7 +27,7 @@ public class AuthUserDAOImpl implements AuthUserDAO {
     @SuppressWarnings("unchecked")
     @Override
     public UserDTO findUserByLogin(String login) {
-        Query query = em.createQuery("from UserEntity where login = :login");
+        Query query = em.createNativeQuery("from UserEntity where login = :login");
         query = query.setParameter(LOGIN, login);
         List<UserEntity> result = query.getResultList();
         return (null == result || result.isEmpty()) ? null : getDTOFromEntity(result.get(0));
@@ -41,7 +41,7 @@ public class AuthUserDAOImpl implements AuthUserDAO {
 
     @Override
     public UserDTO findUserByLoginWithoutPwd(String login) {
-        Query query = em.createQuery("from UserEntity  where login = :login");
+        Query query = em.createNativeQuery("from UserEntity  where login = :login");
         query = query.setParameter(LOGIN, login);
         List<UserEntity> result = query.getResultList();
         return (null == result || result.isEmpty()) ? null : getDTOFromEntityWithoutPwd(result.get(0));
